@@ -1,8 +1,12 @@
 import React from 'react'
 import { motion } from "framer-motion";
-type Props = {}
+import { PageInfo } from '../typings';
+import { urlFor } from '../sanity';
+type Props = {
+  pageInfo:PageInfo
+}
 
-function About({}: Props) {
+function About({pageInfo}: Props) {
   return (
     <motion.div
     initial={{opacity: 0}}
@@ -21,12 +25,12 @@ function About({}: Props) {
       }}
       whileInView={{x: 0, opacity:1}}
       viewport={{once:true}}
-      src="https://images.unsplash.com/photo-1665184762774-a5d4d8c0c5bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"        
+      src={urlFor(pageInfo?.profilePic).url()}        
       className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
       />
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold">Here is a <span className="underline decoration-[#F7AB0A]/50">little</span> background</h4>
-        <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo iure illum, numquam porro amet architecto earum tempora molestias voluptas eos quia quo cupiditate, eveniet quisquam possimus voluptatem debitis omnis at. Ipsam debitis commodi provident.</p>
+        <h4 className="text-4xl font-semibold">Here is a <span className="underline decoration-[#bd93f9]/50">little</span> background</h4>
+        <p className="text-sm">{pageInfo?.backgroundInformation}</p>
       </div>
 
     </motion.div>
